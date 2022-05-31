@@ -1,1 +1,1 @@
-# module-exam-backend-archittecture
+# module-exam-backend-architecture
