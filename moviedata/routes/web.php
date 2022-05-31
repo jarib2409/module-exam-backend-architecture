@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/favorites', [App\Http\Controllers\MovieController::class, 'addToFavorites'])->middleware(['auth'])->name('addFavorite');
-Route::get('/favorites', [App\Http\Controllers\MovieController::class, 'showFavorites'])->middleware(['auth'])->name('favorites');
-Route::delete('/favorite', [App\Http\Controllers\MovieController::class, 'deleteFavorite'])->middleware(['auth'])->name('deleteFavorite');
+Route::post('/favorites', [App\Http\Controllers\AuthenticatedMovieController::class, 'addToFavorites'])->middleware(['auth'])->name('addFavorite');
+Route::get('/favorites', [App\Http\Controllers\AuthenticatedMovieController::class, 'showFavorites'])->middleware(['auth'])->name('favorites');
+Route::delete('/favorite', [App\Http\Controllers\AuthenticatedMovieController::class, 'deleteFavorite'])->middleware(['auth'])->name('deleteFavorite');
 
 require __DIR__.'/auth.php';

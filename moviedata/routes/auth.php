@@ -15,12 +15,12 @@ Route::middleware('guest')->group(function () {
                 ->name('register');
     
     Route::get('/guestDashboard', [App\Http\Controllers\MovieController::class, 'search'])
-                ->name('dashboard');
+                ->name('guestDashboard');
 
     Route::post('/guestDashboard', [App\Http\Controllers\MovieController::class, 'search'])
-                ->name('dashboard');
+                ->name('guestDashboard');
                 
-    Route::get('/guestSurprise', [App\Http\Controllers\MovieController::class, 'randomCategory'])
+    Route::post('/guestSurprise', [App\Http\Controllers\MovieController::class, 'randomCategory'])
                 ->name('randomGuest');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
@@ -69,7 +69,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/dashboard', [App\Http\Controllers\AuthenticatedMovieController::class, 'search'])
                 ->name('dashboard');
                 
-    Route::get('/surprise', [App\Http\Controllers\AuthenticatedMovieController::class, 'randomCategory'])
+    Route::post('/surprise', [App\Http\Controllers\AuthenticatedMovieController::class, 'randomCategory'])
                 ->name('randomCategory');
 
 });

@@ -38,18 +38,6 @@ class MovieController extends Controller
         return view('guestDashboard', ['movies' => $movies]);
     }
 
-    public static function isFavorite($movie_id) {
-        $userId = auth()->user()->id;
-        $isFavorite = Favorite::where(['user_id' => $userId, 'movie_id' => $movie_id])->get();
-        //dd($isFavorite['items']);
-        if (is_object($isFavorite)) {
-            if ($isFavorite->count() > 0) {
-
-            }
-        }
-    }
-
-
     public function randomCategory() {
         $search = 'pokemon';
         $url = 'http://www.omdbapi.com/?s='.$search.'&apikey=8e9882ae&r=json&type=movie';

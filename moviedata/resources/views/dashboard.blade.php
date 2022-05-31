@@ -29,7 +29,7 @@
                             </x-button>
                         </div>
                     </form>
-                    <form method="get" action="{{route('randomCategory')}}">
+                    <form method="post" action="{{route('randomCategory')}}">
                         @csrf
                         <input type="submit" value="Surprise me" class="btn btn-primary">
                     </form>
@@ -45,7 +45,7 @@
                                     <h5 class="card-title text-truncate">{{ $movie->Title }}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">{{ $movie->Year }}</h6>
                                     @auth
-                                        @if (\App\Http\Controllers\MovieController::isFavorite($movie->imdbID))
+                                        @if (\App\Http\Controllers\AuthenticatedMovieController::isFavorite($movie->imdbID))
                                         <form style="padding-top: 2rem;" action="{{route('deleteFavorite')}}" method="post">
                                             @method('DELETE')
                                             @csrf
